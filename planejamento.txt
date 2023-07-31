@@ -1,0 +1,49 @@
+#para iniciar, rodar código no terminal(venv)
+>pip install django
+>django-admin startproject nomedoprojeto .
+# espaço ponto para não criar pasta duas vezes
+
+#para rodar o site
+>python manage.py runserver
+
+#para fazer qualquer alteração no banco de dados do django, no arquivo models.py, tem que rodar no terminal(venv) dois códigos.
+#antes precionar no terminal Ctrl + c  para pausar o código antes de rodar makemigrations e migrate
+>python manage.py makemigrations
+>python manage.py migrate
+
+#para criar o usuario.
+>python manage.py createsuperuser
+
+#primeiro passo, tem que instar o app nos outros aplicativos no arquivo settings INSTALLED_APPS, só colocar o nome do seu app
+
+#nome da classe se cria no singular, pq acrescenta um s depois
+
+#função padrão do python __str__ diz para cada classe do python oq vai aparecer quando um usuário der um print  em algum item dessa classe
+#a pasta templates que estiver fora da pasta do app, estrutura todos arquivos html do site e a pasta templates que estiver dentro da pasta do app, modifica apenas um arquivo html.
+#qualquer alteração feita no base.html altera o resto do site
+#duas ferramentas para pegar estruturas prontas em html e css
+-tailwind
+-bootstrap
+
+- homepage
+- fazer login e criar conta (usuário e autenticação)
+    - email
+    - username
+    - filmes já vistos
+    - ediar perfil
+
+- filmes e séries
+    - thumb
+    - titulo
+    - descrição
+    - categoria
+    - quantidade de views
+    - data criação
+    -episodios
+        - videos
+        - titulo
+
+
+- barra de pesquisa
+
+- obs todo arquivo css tem que ficar dentro do bloco head no base html

@@ -1,0 +1,75 @@
+Passo a passo deploy no heroku
+
+1 - mudar o DEBUG = True para False
+e acrescentar os links no 
+ALLOWED_HOTS = []
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+2 - Heroku precisa de três arquivos que devem ser criados
+na mesma pasta onde fica o arquivo manage.py 
+esses arquivos são: requirements, runtime e Procfile 
+
+requirements: é para mostrar todas bibliotecas que foram usadas no app, o pip freeze mostra todas as bibliotecas que foi  instaladas.
+e para salvar esses arquivos em um documento de texto, da para fazer direto pelo pip freeze > requirements.txt
+se adicionar mais alguma biblioteca depois, é só rodar mais uma vez o pip freeze > requirements.txt q atualiza
+
+runtime: por padrão é onde voce vai dizer a versão do python que esta usando.
+da para olhar a versão em file, settings, Project:sitedjango 
+ou só abrir o python console q ja mostra a versão, ex: python-3.10
+
+Procfile: tem que ser criado sem extensão e com P maiúsculo para que o heroku encontre. 
+nesse arquivo tem que passar um comando padronizado. 
+
+web: gunicorn nomedoapp.wsgi --log-file -
+
+'nome do app onde fica a pasta com o arquivo wsgi.py'
+
+este arquivo Procfile gerencia diversas requisições no site ao mesmo tempo. 
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+3 - depois precisa instalar duas bibliotecas
+
+* gunicorn 
+
+* whitenoise
+
+whitenoise ajuda a gerenciar os arquivos static
+
+no site da heroku, adicionar o python em settings, buldpacks
+
+depois criar um arquivo .gitgnore e copiar todo codigo do site git, para poder ignorar alguns arquivos que não queira fazer o deploy.
+exemplo o ambinente virtual, arquivos de planejamento etc.. 
+quando o arquivo for uma pasta, usar / ao lado. 
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+4- depois disso, fazer o passo a passo de deploy do heroku
+
+git add . 
+ 
+adicionando todos arquivos menos os ignorados
+
+git commit -m "commit inicial" 
+
+para lembrar q é a primeira vez que ta fazendo um commit
+
+git push heroku master
+
+feito isso vai dar um erro que tem que configurar no settings do site
+ criando um 
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+depois tem que adicionar o whitenoise em baixo do MIDDLEWARE
+
+'whitenoise.middleware.WhiteNoiseMiddleware',
+
+ 
+
+
+
+
+
+
+ 
